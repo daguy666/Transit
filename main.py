@@ -11,8 +11,20 @@ from utils.info_scan import Informational_Scan
 from plist_dir.plist_user import Return_User_Plists
 from plist_dir.plist_root_level import Return_Root_Level_Plists
 
-
+# log that were running the program
 LOGGER.info('Running menu.py')
+
+transit = """
+======================================================================
+
+         ___________________________. .___________________________.
+     .--/____|______________________| |___|||||___|_|____|_|___ --|
+     |    |-|                    | |=| |          |_|    |-|      |
+     |  __|-|____________________|_|=|_|__________|_|____|-|__.   |
+     |_/<_>=<_>\_________/<_>=<_>\_|=|_|<_>=<_>|_____|<_>=<_>|____|
+=====================================================================
+"""
+
 
 try:
 
@@ -20,8 +32,10 @@ try:
 
     print lines
     print "\t\tWelcome to Transit ...\n"  # ascii4rt this up later
+    print "\t\tIncident Response Toolkit."
     print "\tPick one of the following menu items to begin: "
     print lines
+    print transit
 
 
     menu_item_one = "Run a full informational scan: " # do everything (whatever that is)

@@ -6,3 +6,6 @@
 
 # idea charm
 *.idea
+
+# don't commit the log file.
+logs/incidentR.log
