@@ -53,7 +53,7 @@ class Plist_Reader(object):
 
 
 if __name__ == '__main__':
-    user = "jpistone"
+    user = "username to test"
     path = "/Users/%s/Library/LaunchAgents" % user
     plr = Plist_Reader(path)
     print plr.main()
