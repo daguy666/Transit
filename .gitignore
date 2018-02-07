@@ -1,0 +1,8 @@
+# pyc
+*.pyc
+
+# swap
+*.swp
+
+# idea charm
+*.idea
