@@ -38,6 +38,6 @@ class Return_User_Plists(object):
 
 
 if __name__ == '__main__':
-    rup = Return_User_Plists('jpistone')
+    rup = Return_User_Plists('username to test')
     rup.main()
 
