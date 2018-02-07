@@ -8,4 +8,4 @@
 *.idea
 
 # don't commit the log file.
-logs/incidentR.log
+log/incidentR.log
