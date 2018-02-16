@@ -36,6 +36,15 @@ class Informational_Scan(object):
         print "[+] OS Build: %s " % self.gsi.return_os_build()
         # Print OS Name
         print "[+] OS Name: %s" % self.gsi.return_os_version_name().capitalize()
+        # Print shutdown and reboot status. 
+        print self.lines
+        print "[+] Shutdown history: "
+        for i in self.gsi.show_last_shutdown():
+            print "\t[-] %s" % i
+        print self.lines
+        print "[+] Reboot history: "
+        for i in self.gsi.show_last_reboot():
+            print "\t[-] %s " % i
         print self.lines
         # Print out wireless networks
         for wifi in self.gsi.return_wireless_networks():

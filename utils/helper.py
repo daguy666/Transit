@@ -46,7 +46,6 @@ class Gather_System_Info(object):
             LOGGER.info('Returning hostname')
             return hostname
 
-
     def return_directory_contents(self, path):
         """
         This method will list a directories contents
@@ -213,18 +212,25 @@ class Gather_System_Info(object):
         """
         wifi_list = []
         # We are shelling out for this, and assuming wifi is on interface en0
-        for i in self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en0'):
-            wifi_list.append(i)
+        #for i in self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en0'):
+        #    wifi_list.append(i)
         # This will check that the wireless interface is valid
         # Using the bash output to match on.
-        if wifi_list[0].lower().startswith('preferred'):
+        #if wifi_list[0].lower().startswith('preferred'):
 
-            return wifi_list
+        #        return wifi_list
 
         # If the interface is wrong, present the user with the location of the code
         # or maybe prompt them to add it. OR just bail completely well get there.
         #else:
         #    print "[!] Wireless interface is invalid, go to line 175 in helper.py to fix."
+        output = self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en0')        
+        if 'error' in output[1].lower():
+           output = self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en1')
+        
+        for i in output:
+            wifi_list.append(i)
+        return wifi_list
 
     def tar_log_directory(self):
         """
@@ -236,4 +242,27 @@ class Gather_System_Info(object):
         if os.path.exists(path_root):
             self.shell_cmd('tar czf log_%s.tar.gz %s' % (timestamp, path_root))
             return "[+] %s Zipping up %s directory. " % (timestamp, path_root)
+    
+    def show_last_reboot(self):
+        """
+        This will return a list of data regarding the last time 
+        the machine was rebooted.
+        """
+        output = self.shell_cmd('last reboot')
+        output_list = []
+        if output:
+            for i in output:
+                output_list.append(i)
+        return output_list
 
+    def show_last_shutdown(self):
+        """
+        This method will return a list of information about when 
+        the machine was last shutdown.
+        """
+        output = self.shell_cmd('last shutdown')
+        output_list = []
+        if output:
+            for i in output:
+                output_list.append(i)
+        return output_list
