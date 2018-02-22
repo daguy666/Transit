@@ -66,10 +66,18 @@ try:
 
     not_yet = "[+] Feature not available yet."
 
+    ### == ### Instantiate our classes ### == ###
+    IS   = Informational_Scan()
+    GSI  = Gather_System_Info()
+    #PLR  = Return_User_Plists(username)  # Needs username
+    RRLP = Return_Root_Level_Plists()
+    #############################################
+
+
     if user_input.isdigit():
         if user_input == "1":
             LOGGER.info('Option 1 chosen full info scan')
-            IS = Informational_Scan()
+            # Informational_Scan()
             IS.main()
 
         elif user_input == "2":
@@ -81,12 +89,14 @@ try:
             username = raw_input('Please enter a username to search: ').lower()
             if username.isalnum():
                 LOGGER.info('Option 3 chosen gather plist for user %s ' % username)
-                gsi = Gather_System_Info()
+                # GSI()
                 # Checks that the user account has a home directory listed
-                if username in gsi.return_home_dirs():
-                    plr = Return_User_Plists(username)
+                if username in GSI.return_home_dirs():
+                    print "username"
+                    PLR = Return_User_Plists(username)
+                    #TODO adjust the code to take the username in the main PLR.Return_User_Plists()
                     # PPrints for readability
-                    pprint(plr.main())
+                    PLR.main()
                 else:
                     print "[!] Username not found on system"
                     LOGGER.error('Choice 3 but username: %s not found on system' % username)
@@ -97,20 +107,22 @@ try:
 
         elif user_input == "4":
             # Returns the root level plists for launchA / launchD
-            rrlp = Return_Root_Level_Plists()
-            rrlp.main()
+            #Return_Root_Level_Plists()
+            RRLP.main()
 
         elif user_input == "5":
             # Returns the tar of the log directories
-            gsi = Gather_System_Info()
+            #Gather_System_Info()
             print "[+] Taring up the root logging directory ..."
-            gsi.tar_log_directory()
+            GSI.tar_log_directory()
             print "[+] Completed. \n"
         
         elif user_input == "6":
         # There is no option 6 as of yet.
             print "[!] There is no spoon." 
             LOGGER.info('Option 6 chose, but no content yet.')
+            print "do some systemy info" 
+
     else:
         print "\n[!] Invalid input: %s" % user_input
 

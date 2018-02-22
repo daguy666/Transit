@@ -2,6 +2,7 @@
 
 import os
 
+from pprint import pprint
 from utils.logger import LOGGER
 from plist_two import Plist_Reader
 
@@ -15,6 +16,7 @@ class Return_User_Plists(object):
         self.user = user
         self.path = "/Users/%s/Library/LaunchAgents" % self.user
         self.plist_list = []
+        self.lines = "==" * 40
 
     def show_user_plist(self):
         """
@@ -34,7 +36,11 @@ class Return_User_Plists(object):
         """
         LOGGER.info('Running plist_user for %s' % self.user)
         self.show_user_plist()
-        return self.plist_list
+        for i in self.plist_list:
+            print self.lines
+            print "%s/%s" % (self.path,i['Label'])
+            print self.lines
+            pprint(i)
 
 
 if __name__ == '__main__':
