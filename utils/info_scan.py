@@ -22,7 +22,7 @@ class Informational_Scan(object):
         print self.lines
         print "[+] System Time: %s" % system_time
         # Print some info about the processor
-        print "[+] Processor info: %s " % self.gsi.return_platorm_info()
+        print "[+] Processor info: %s " % self.gsi.return_platform_info()
         # Print out the computer hostname
         print "[+] Hostname: %s" % self.gsi.return_hostname()
         # Print out home directories

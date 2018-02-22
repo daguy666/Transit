@@ -29,7 +29,7 @@ class Gather_System_Info(object):
         # This method runs a shell command.
         return Popen(cmd.split(' '), stdout=PIPE, stderr=PIPE).communicate()[0].strip('\n').split('\n')
 
-    def return_platorm_info(self):
+    def return_platform_info(self):
         """
         Returns some info about the system processor
         """
@@ -266,3 +266,15 @@ class Gather_System_Info(object):
             for i in output:
                 output_list.append(i)
         return output_list
+
+    def return_diskspace(self):
+        """
+        Shells out and returns the disk space on all mounts.
+        """
+        output = self.shell_cmd('df -h') 
+        output_list = []
+        if output:
+            for i in output:
+                output_list.append(i)
+        return output_list
+

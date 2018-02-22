@@ -9,6 +9,7 @@ from utils.logger import LOGGER
 from utils.helper import Gather_System_Info
 from utils.info_scan import Informational_Scan
 from plist_dir.plist_user import Return_User_Plists
+from utils.system_scan import System_Information_Scan
 from plist_dir.plist_root_level import Return_Root_Level_Plists
 
 # log that were running the program
@@ -71,6 +72,7 @@ try:
     GSI  = Gather_System_Info()
     #PLR  = Return_User_Plists(username)  # Needs username
     RRLP = Return_Root_Level_Plists()
+    SIS = System_Information_Scan()
     #############################################
 
 
@@ -119,9 +121,9 @@ try:
         
         elif user_input == "6":
         # There is no option 6 as of yet.
-            print "[!] There is no spoon." 
             LOGGER.info('Option 6 chose, but no content yet.')
-            print "do some systemy info" 
+            SIS.main()
+            
 
     else:
         print "\n[!] Invalid input: %s" % user_input
