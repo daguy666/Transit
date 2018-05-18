@@ -27,7 +27,7 @@ class Return_User_Plists(object):
             for i in plr.main():
                 self.plist_list.append(i)
         else:
-            print "[?] Path not found or something went wrong"
+            #print "[?] Path: %s not found" % self.path
             LOGGER.error('plist_user show_user_plist path not found: %s' % self.path)
 
     def main(self):

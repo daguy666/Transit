@@ -10,6 +10,7 @@ from utils.helper import Gather_System_Info
 from utils.info_scan import Informational_Scan
 from plist_dir.plist_user import Return_User_Plists
 from utils.system_scan import System_Information_Scan
+from plist_dir.plist_all_users import Return_All_User_Plists
 from plist_dir.plist_root_level import Return_Root_Level_Plists
 
 # log that were running the program
@@ -71,6 +72,7 @@ try:
     IS   = Informational_Scan()
     GSI  = Gather_System_Info()
     #PLR  = Return_User_Plists(username)  # Needs username
+    PLAU = Return_All_User_Plists()
     RRLP = Return_Root_Level_Plists()
     SIS = System_Information_Scan()
     #############################################
@@ -83,8 +85,8 @@ try:
             IS.main()
 
         elif user_input == "2":
-            LOGGER.info('Option 2 chosen - But is not ready yet')
-            print not_yet
+            LOGGER.info('Option 2 chosen - Experimental Mode')
+            PLAU.main()
 
         elif user_input == "3":
             # Returns user level launchA
@@ -96,7 +98,7 @@ try:
                 if username in GSI.return_home_dirs():
                     print "username"
                     PLR = Return_User_Plists(username)
-                    #TODO adjust the code to take the username in the main PLR.Return_User_Plists()
+                    # TODO adjust the code to take the username in the main PLR.Return_User_Plists()
                     # PPrints for readability
                     PLR.main()
                 else:
