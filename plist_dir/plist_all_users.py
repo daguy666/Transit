@@ -51,7 +51,7 @@ class Return_All_User_Plists(object):
         Return all the root plists
         """
         root_lists = self.root_plist.main()
-        if root_lists:
+        #if root_lists:
             #todo finish this method
 
     def main(self):
