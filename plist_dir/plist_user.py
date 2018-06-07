@@ -3,8 +3,10 @@
 import os
 
 from pprint import pprint
+
 from utils.logger import LOGGER
 from plist_two import Plist_Reader
+from extras.colors import Make_Color
 
 
 #TODO INCLUDE HASH OF PLIST IN OUTPUT
@@ -17,6 +19,7 @@ class Return_User_Plists(object):
         self.path = "/Users/%s/Library/LaunchAgents" % self.user
         self.plist_list = []
         self.lines = "==" * 40
+
 
     def show_user_plist(self):
         """
@@ -36,9 +39,10 @@ class Return_User_Plists(object):
         """
         LOGGER.info('Running plist_user for %s' % self.user)
         self.show_user_plist()
+        color = Make_Color('LOCAL')
         for i in self.plist_list:
             print self.lines
-            print "[LOCAL] %s/%s" % (self.path,i['Label'])
+            print "[%s] %s/%s" % (color.color_me_green(), self.path, i['Label'])
             print self.lines
             pprint(i)
 

@@ -4,6 +4,7 @@ import os
 
 from pprint import pprint
 from plist_two import Plist_Reader
+from extras.colors import Make_Color
 
 #TODO INCLUDE HASH OF PLIST IN OUTPUT
 
@@ -21,12 +22,13 @@ class Return_Root_Level_Plists(object):
         Returns plists for each of the root level
         locations.
         """
+        color = Make_Color('ROOT')
         try:
             if os.path.exists(path):
                 plr = Plist_Reader(path)
                 for i in plr.main():
                     print "==" * 40
-                    print "[ROOT] %s/%s" % (path, i['Label'])
+                    print "[%s] %s/%s" % (color.color_me_red(), path, i['Label'])
                     print "==" * 40
                     print ""
                     pprint(i)
