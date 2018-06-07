@@ -26,7 +26,7 @@ class Return_Root_Level_Plists(object):
                 plr = Plist_Reader(path)
                 for i in plr.main():
                     print "==" * 40
-                    print "%s/%s" % (path, i['Label'])
+                    print "[ROOT] %s/%s" % (path, i['Label'])
                     print "==" * 40
                     print ""
                     pprint(i)

@@ -38,7 +38,7 @@ class Return_User_Plists(object):
         self.show_user_plist()
         for i in self.plist_list:
             print self.lines
-            print "%s/%s" % (self.path,i['Label'])
+            print "[LOCAL] %s/%s" % (self.path,i['Label'])
             print self.lines
             pprint(i)
 
