@@ -27,7 +27,8 @@ class Gather_System_Info(object):
         # Logs all shell commands for safety.
         LOGGER.info('Starting shell_cmd method with the following command: %s' % cmd)
         # This method runs a shell command.
-        return Popen(cmd.split(' '), stdout=PIPE, stderr=PIPE).communicate()[0].strip('\n').split('\n')
+        return Popen(cmd.split(' '),
+                     stdout=PIPE, stderr=PIPE).communicate()[0].strip('\n').split('\n')
 
     def return_platform_info(self):
         """
@@ -102,7 +103,7 @@ class Gather_System_Info(object):
         LOGGER.info('Returning users.')
         return user_list
 
-    def return_open_files(self):
+    def return_open_with_internet(self):
         """
         Returns a list of open files using an internet connection.
         """
@@ -114,6 +115,18 @@ class Gather_System_Info(object):
         LOGGER.info('Returning list of open file')
         return lsof_i_list
 
+    def return_open_files(self):
+        """
+        Returns a list of open files using an internet connection.
+        """
+        lsof_list = []
+        lsofi = self.shell_cmd('lsof')
+        if lsofi:
+            for files in lsofi:
+                lsof_list.append(files)
+        LOGGER.info('Returning list of open file')
+        return lsof_list
+
     def return_crons(self, user):
         """
         Returns a list of crons and users associated.
@@ -122,7 +135,8 @@ class Gather_System_Info(object):
         crontab = self.shell_cmd('/usr/bin/crontab -u %s -l' % user)
         if crontab:
             cron_list.append(crontab)
-            return 'User="%s" Cron+"%s"' % (user, crontab)
+            if crontab > 1:
+                return 'User="%s" Cron="%s"' % (user, crontab)
 
     def return_os_build(self):
         """

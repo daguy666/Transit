@@ -49,8 +49,17 @@ class Informational_Scan(object):
         # Print out wireless networks
         for wifi in self.gsi.return_wireless_networks():
             print "[+] %s" % wifi.strip()
+        print self.lines
+        for open_files_i in self.gsi.return_open_with_internet():
+            print "[+] %s" % open_files_i
+        print self.lines
+        for open_files in self.gsi.return_open_files():
+            print "[+] %s" % open_files
 
-
+        print self.lines
+        for i in self.gsi.return_list_of_users():
+            if len(self.gsi.return_crons(i)) > 1:
+                print self.gsi.return_crons(i)
 
 
     def main(self):

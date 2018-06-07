@@ -20,7 +20,6 @@ class Return_All_User_Plists(object):
     def __init__(self):
         self.gsi = Gather_System_Info()
         self.root_plist = Return_Root_Level_Plists()
-        #self.user_pref = Return_User_Plists()
         self.user_list = []
 
 

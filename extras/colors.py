@@ -3,6 +3,19 @@
 from termcolor import colored
 
 
+"""
+#####USAGE##############################
+
+from extras.color import Make_Color
+
+color = Make_Color('Text to change color')
+
+color.color_me_red()
+
+#####USAGE##############################
+"""
+
+
 class Make_Color(object):
     """
     Let's add a splash of color.
@@ -32,17 +45,3 @@ class Make_Color(object):
         """
         if self.inbound:
             return colored(self.inbound, 'blue')
-
-
-
-"""
-#####USAGE##############################
-
-from extras.color import Make_Color
-
-color = Make_Color('Text to change color')
-
-color.color_me_red()
-
-#####USAGE##############################
-"""

@@ -6,6 +6,7 @@
 from pprint import pprint
 
 from utils.logger import LOGGER
+from extras.colors import Make_Color
 from utils.helper import Gather_System_Info
 from utils.info_scan import Informational_Scan
 from plist_dir.plist_user import Return_User_Plists
@@ -28,16 +29,27 @@ transit = """
 """
 
 
+# TODO Get a better work flow for this.
+# TODO Maybe use something like ...
+"""
+data = Make_Color('')
+data.inbound = "something to color"
+print data.color_me_red()
+"""
+
+blue = Make_Color(transit)
+red = Make_Color('\t\tWelcome to Transit\n')
+
 try:
 
     lines = "==" * 35
 
     print lines
-    print "\t\tWelcome to Transit ...\n"  # ascii4rt this up later
+    print red.color_me_red()  # ascii4rt this up later
     print "\t\tIncident Response Toolkit."
     print "\tPick one of the following menu items to begin: "
     print lines
-    print transit
+    print blue.color_me_blue()
 
 
     menu_item_one = "Run a full informational scan: " # do everything (whatever that is)
