@@ -13,25 +13,29 @@ class System_Information_Scan(object):
         self.GSI = Gather_System_Info()
         self.lines = "--" * 35
 
+    def _create_output(self, key, value):
+        """
+        Internal method to clean up the random print statments.
+        """
+        print "[+] %s: %s" % (key, value) 
+
     def aquire_system_info(self):
         """
-        Gather information about the system, similar to info_scan.
+        Gather information about the system, siilar to info scan."
         """
-        # system time at start of scan
+        print "\n\n\tSystem Informational Scan" 
+        print self.lines
         system_time = datetime.today().strftime('%Y-%m-%d--%H:%M:%S')
+        self._create_output('Current System Type', system_time)
+        self._create_output('CPU', self.GSI.return_platform_info())
+        self._create_output('Hostname', self.GSI.return_hostname())
         print self.lines
-        print "Current System Time: %s" % system_time
+        self._create_output('OS Version', self.GSI.return_os_version())
+        self._create_output('OS Build', self.GSI.return_os_build())
+        self._create_output('OS Name', self.GSI.return_os_version_name().capitalize())
         print self.lines
-        print "[+] CPU: %s" % self.GSI.return_platform_info()
-        print "[+] Hostname: %s" % self.GSI.return_hostname()
-        print "[+] OS Version: %s " % self.GSI.return_os_version()
-        print "[+] OS Build: %s" % self.GSI.return_os_build()
-        print "[+] OS Name: %s" % self.GSI.return_os_version_name().capitalize()
-        print self.lines
-        print "[+] Disk space: "
         for mount in self.GSI.return_diskspace():
-            print "\t[+] %s" % mount
-
+            self._create_output('Disk Space', mount)
         # TODO FINEEESH THIS.
     
     def main(self):
