@@ -13,7 +13,47 @@ class Informational_Scan(object):
         self.gsi = Gather_System_Info()
         self.lines = "--" * 35
 
+    def _create_output(self, key, value):
+        """
+        Internal method to clean up the random print statments.
+        """
+        print "[+] %s: %s" % (key, value)
+
     def build_up_system_info(self):
+        """
+        Starts buidling the output for the info scan.
+        """
+        print "\n\n\tInformation Scan"
+        print self.lines
+        # Obtain the system time
+        system_time = datetime.today().strftime('%Y-%m-%d--%H:%M:%S')
+        self._create_output('System Time', system_time)
+        self._create_output('Processor Info', self.gsi.return_platform_info())
+        self._create_output('Hostname', self.gsi.return_hostname())
+        for h_dir in self.gsi.return_home_dirs():
+            self._create_output('Home Directories', h_dir)
+        self._create_output('OS Version', self.gsi.return_os_version())
+        self._create_output('OS Build', self.gsi.return_os_build())
+        self._create_output('OS Name', self.gsi.return_os_version_name().capitalize())
+        print self.lines
+        for shutdown in self.gsi.show_last_shutdown():
+            self._create_output('Shutdown History', shutdown)
+        print self.lines
+        for restart in self.gsi.show_last_reboot():
+            self._create_output('Reboot History', restart)
+        print self.lines
+        for wifi in self.gsi.return_wireless_networks():
+            self._create_output('Wireless', wifi)
+        print self.lines
+        for open_file in self.gsi.return_open_with_internet():
+            self._create_output('Open Files with Internet', open_file)
+       
+       #================================================   
+        #TODO finish the cron output        
+        #TODO check on the return open with internet
+        #================================================   
+
+    def ___build_up_system_info(self):
         """
         Starts building up some system info
         """
