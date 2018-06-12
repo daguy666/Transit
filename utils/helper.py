@@ -11,6 +11,7 @@ from subprocess import Popen, PIPE
 
 from plist_dir.plist import Get_Plist_Info
 
+
 class Gather_System_Info(object):
 
     def __init__(self):
@@ -127,16 +128,18 @@ class Gather_System_Info(object):
         LOGGER.info('Returning list of open file')
         return lsof_list
 
-    def return_crons(self, user):
+    def return_cron_tab(self, user):
         """
-        Returns a list of crons and users associated.
+        Returns a list of crons associated to a user
         """
         cron_list = []
         crontab = self.shell_cmd('/usr/bin/crontab -u %s -l' % user)
-        if crontab:
-            cron_list.append(crontab)
-            if crontab > 1:
-                return 'User="%s" Cron="%s"' % (user, crontab)
+        # yeeesh finally got this right.
+        for i in crontab:
+            if len(i) > 1:
+                print "[+] User: %s Cron: %s" % (user, i)
+
+
 
     def return_os_build(self):
         """

@@ -47,11 +47,16 @@ class Informational_Scan(object):
         print self.lines
         for open_file in self.gsi.return_open_with_internet():
             self._create_output('Open Files with Internet', open_file)
+        print self.lines
+        # For loop over the gsi.return_list_of_users()
+        # and then use that to run gsi.return_crons()
+        for user in self.gsi.return_list_of_users():
+            self.gsi.return_cron_tab(user)
        
        #================================================   
-        #TODO finish the cron output        
-        #TODO check on the return open with internet
-        #================================================   
+       #TODO finish the cron output
+       #TODO check on the return open with internet
+       #================================================
 
     def ___build_up_system_info(self):
         """

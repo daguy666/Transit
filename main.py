@@ -137,7 +137,16 @@ try:
         # There is no option 6 as of yet.
             LOGGER.info('Option 6 chose, but no content yet.')
             SIS.main()
-            
+
+        elif user_input == "7":
+            # For prototyping only
+            #LOGGER.info('Running a prototype scan')
+            #users = GSI.return_list_of_users()
+            #for i in users:
+            #    print GSI.return_crons(i)
+            from proto.temp import proto_test
+            proto_test()
+
 
     else:
         print "\n[!] Invalid input: %s" % user_input
