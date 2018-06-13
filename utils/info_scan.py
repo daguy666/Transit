@@ -21,12 +21,20 @@ class Informational_Scan(object):
 
     def build_up_system_info(self):
         """
-        Starts buidling the output for the info scan.
+        Starts building the output for the info scan.
         """
         print "\n\n\tInformation Scan"
         print self.lines
         # Obtain the system time
         system_time = datetime.today().strftime('%Y-%m-%d--%H:%M:%S')
+        # System up time
+        for i in self.gsi.return_system_uptime():
+            self._create_output('System Uptime', i)
+        print self.lines
+        # Return ogged in users
+        for i in self.gsi.return_logged_in_users():
+            self._create_output('Logged in Users:', i)
+        print self.lines
         self._create_output('System Time', system_time)
         self._create_output('Processor Info', self.gsi.return_platform_info())
         self._create_output('Hostname', self.gsi.return_hostname())
@@ -52,6 +60,10 @@ class Informational_Scan(object):
         # and then use that to run gsi.return_crons()
         for user in self.gsi.return_list_of_users():
             self.gsi.return_cron_tab(user)
+        # Present any screen sessions.
+        print self.lines
+        for screen in self.gsi.return_any_screen_sessions():
+            self._create_output('Screen Session', screen)
        
 
 

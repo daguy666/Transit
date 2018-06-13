@@ -254,7 +254,7 @@ class Gather_System_Info(object):
         tars up the log directory
         """
         path_root = "/var/log"
-        # todo add local user logging directories too
+        # TODO add local user logging directories too
         timestamp = datetime.today().strftime('%Y-%m-%d-%S')
         if os.path.exists(path_root):
             self.shell_cmd('tar czf log_%s.tar.gz %s' % (timestamp, path_root))
@@ -294,4 +294,39 @@ class Gather_System_Info(object):
             for i in output:
                 output_list.append(i)
         return output_list
+
+    def return_system_uptime(self):
+        """
+        Shells out and returns the system uptime
+        """
+        output = self.shell_cmd('/usr/bin/uptime')
+        output_list = []
+        if output:
+            for i in output:
+                output_list.append(i)
+        return output_list
+
+    def return_logged_in_users(self):
+        """
+        Returns a list of logged in users.
+        """
+        output = self.shell_cmd('/usr/bin/w')
+        output_list = []
+        if output:
+            for i in output:
+                output_list.append(i)
+        return output_list
+
+    def return_any_screen_sessions(self):
+        """
+        Returns any active screen sessions
+        """
+        output = self.shell_cmd('/usr/bin/screen -ls')c
+        if output:
+            return output
+
+
+
+
+
 
