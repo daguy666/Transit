@@ -4,7 +4,7 @@ import os
 
 from datetime import datetime
 from helper import Gather_System_Info
-
+from extras.colors import Make_Color
 
 class Informational_Scan(object):
 
@@ -108,6 +108,9 @@ class Informational_Scan(object):
 
 
     def main(self):
+        """
+        Lets start this thing up.
+        """
         self.build_up_system_info()
 
 

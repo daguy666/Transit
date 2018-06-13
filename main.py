@@ -3,6 +3,7 @@
 
 # menu file for IR program
 
+import os
 from pprint import pprint
 
 from utils.logger import LOGGER
@@ -39,6 +40,7 @@ print data.color_me_red()
 
 blue = Make_Color(transit)
 red = Make_Color('\t\tWelcome to Transit\n')
+root_check = Make_Color('\t[!] You may get better results if you run as root.')
 
 try:
 
@@ -50,7 +52,11 @@ try:
     print "\tPick one of the following menu items to begin: "
     print lines
     print blue.color_me_blue()
-
+    
+    if os.getuid() != 0:
+        print root_check.color_me_red()
+    
+    # Checks for root, then suggest you may get better results with it. 
 
     menu_item_one = "Run a full informational scan: " # do everything (whatever that is)
     # Maybe make plists a tree'd option
