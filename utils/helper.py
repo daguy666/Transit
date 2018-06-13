@@ -321,12 +321,7 @@ class Gather_System_Info(object):
         """
         Returns any active screen sessions
         """
-        output = self.shell_cmd('/usr/bin/screen -ls')c
+        output = self.shell_cmd('/usr/bin/screen -ls')
         if output:
             return output
-
-
-
-
-
 
