@@ -129,26 +129,26 @@ try:
 
         elif user_input == "4":
             # Returns the root level plists for launchA / launchD
-            #Return_Root_Level_Plists()
+            # Return_Root_Level_Plists()
             RRLP.main()
 
         elif user_input == "5":
             # Returns the tar of the log directories
-            #Gather_System_Info()
+            # Gather_System_Info()
             print "[+] Taring up the root logging directory ..."
             GSI.tar_log_directory()
             print "[+] Completed. \n"
         
         elif user_input == "6":
-        # There is no option 6 as of yet.
+            # There is no option 6 as of yet.
             LOGGER.info('Option 6 chose, but no content yet.')
             SIS.main()
 
         elif user_input == "7":
             # For prototyping only
-            #LOGGER.info('Running a prototype scan')
-            #users = GSI.return_list_of_users()
-            #for i in users:
+            # LOGGER.info('Running a prototype scan')
+            # users = GSI.return_list_of_users()
+            # for i in users:
             #    print GSI.return_crons(i)
             from proto.temp import proto_test
             proto_test()
@@ -162,5 +162,5 @@ except KeyboardInterrupt:
         print "\n[-] Program exited.\n"
 
 
-#TODO call out the classes better here. At the moment its sloppy and per a code block.
+# TODO call out the classes better here. At the moment its sloppy and per a code block.
 

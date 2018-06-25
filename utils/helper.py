@@ -203,7 +203,7 @@ class Gather_System_Info(object):
         """
         This will return a specific user's (or users if looped) .bash_history in a list
         """
-        #bash_history = []
+        # bash_history = []
         bash_history = {}
         with open('/Users/%s/.bash_history' % user, 'r') as all_history:
             if all_history:
@@ -229,21 +229,21 @@ class Gather_System_Info(object):
         """
         wifi_list = []
         # We are shelling out for this, and assuming wifi is on interface en0
-        #for i in self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en0'):
+        # for i in self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en0'):
         #    wifi_list.append(i)
         # This will check that the wireless interface is valid
         # Using the bash output to match on.
-        #if wifi_list[0].lower().startswith('preferred'):
+        # if wifi_list[0].lower().startswith('preferred'):
 
         #        return wifi_list
 
         # If the interface is wrong, present the user with the location of the code
         # or maybe prompt them to add it. OR just bail completely well get there.
-        #else:
+        # else:
         #    print "[!] Wireless interface is invalid, go to line 175 in helper.py to fix."
         output = self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en0')        
         if 'error' in output[1].lower():
-           output = self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en1')
+            output = self.shell_cmd('/usr/sbin/networksetup -listpreferredwirelessnetworks en1')
         
         for i in output:
             wifi_list.append(i)

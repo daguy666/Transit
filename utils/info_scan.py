@@ -31,15 +31,17 @@ class Informational_Scan(object):
         for i in self.gsi.return_system_uptime():
             self._create_output('System Uptime', i)
         print self.lines
-        # Return ogged in users
+        # Return logged in users
         for i in self.gsi.return_logged_in_users():
             self._create_output('Logged in Users:', i)
         print self.lines
         self._create_output('System Time', system_time)
         self._create_output('Processor Info', self.gsi.return_platform_info())
         self._create_output('Hostname', self.gsi.return_hostname())
+        print self.lines
         for h_dir in self.gsi.return_home_dirs():
             self._create_output('Home Directories', h_dir)
+        print self.lines
         self._create_output('OS Version', self.gsi.return_os_version())
         self._create_output('OS Build', self.gsi.return_os_build())
         self._create_output('OS Name', self.gsi.return_os_version_name().capitalize())
@@ -64,8 +66,6 @@ class Informational_Scan(object):
         print self.lines
         for screen in self.gsi.return_any_screen_sessions():
             self._create_output('Screen Session', screen)
-       
-
 
     def main(self):
         """
