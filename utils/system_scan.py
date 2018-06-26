@@ -36,6 +36,12 @@ class System_Information_Scan(object):
         print self.lines
         for mount in self.GSI.return_diskspace():
             self._create_output('Disk Space', mount)
+        print self.lines
+        self._create_output(self.GSI.return_system_memory(), '')
+        self._create_output(self.GSI.return_uuid(), '')
+        self._create_output(self.GSI.return_macos_serial_number(), '')
+        print self.lines
+        self._create_output(self.GSI.return_processor_speed(), '')
         # TODO FINEEESH THIS.
     
     def main(self):

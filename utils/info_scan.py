@@ -39,7 +39,7 @@ class Informational_Scan(object):
         self._create_output('Processor Info', self.gsi.return_platform_info())
         self._create_output('Hostname', self.gsi.return_hostname())
         print self.lines
-        for h_dir in self.gsi.return_home_dirs():
+        for h_dir in self.gsi.return_home_dirs_with_paths():
             self._create_output('Home Directories', h_dir)
         print self.lines
         self._create_output('OS Version', self.gsi.return_os_version())

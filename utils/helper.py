@@ -139,8 +139,6 @@ class Gather_System_Info(object):
             if len(i) > 1:
                 print "[+] User: %s Cron: %s" % (user, i)
 
-
-
     def return_os_build(self):
         """
         Shells out and returns the build of the operating system.
@@ -325,3 +323,54 @@ class Gather_System_Info(object):
         if output:
             return output
 
+    def return_system_memory(self):
+        """
+        Returns a string containing how much memory is onboard.
+        Kind of a hack, I am not super thrilled with this one.
+        """
+        output = self.shell_cmd('system_profiler SPHardwareDataType')
+        if output:
+            # hard coding the 12th item in the index to memory. Don't go changing!
+            memory = output[12].strip()
+            if memory.lower().startswith('memory'):
+                return memory
+            else:
+                return "Error returning system memory"
+
+    def return_uuid(self):
+        """
+        Returns a string containing how much memory is onboard.
+        Kind of a hack, I am not super thrilled with this one.
+        """
+        output = self.shell_cmd('system_profiler SPHardwareDataType')
+        if output:
+            # hard coding the 12th item in the index to memory. Don't go changing!
+            uuid = output[16].strip()
+            if uuid.lower().startswith('hardware'):
+                return uuid
+            else:
+                return "Error returning Hardware UUID"
+
+    def return_macos_serial_number(self):
+        """
+        Same as above, it returns the serial number, but not in the best way.
+        """
+        output = self.shell_cmd('system_profiler SPHardwareDataType')
+        if output:
+            serial = output[15].strip()
+            if serial.lower().startswith('serial'):
+                return serial
+            else:
+                return "Error returning serial number"
+
+    def return_processor_speed(self):
+        """
+        Returns processor speed
+        """
+        output = self.shell_cmd('system_profiler SPHardwareDataType')
+        if output:
+            speed = output[7].strip()
+            if speed.lower().startswith('processor'):
+                return speed
+            else:
+                return "Error returning processor"
