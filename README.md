@@ -30,8 +30,11 @@ Transit can pull the following information from a system.
 5. This feature will currently zip up the root log directory
 6. Gather system info.
 
-
 ---
+
+##### Installation 
+`pip install -r requirements.txt`
+
 
 `helper.py` has a class `Gather_System_Info()` this class will be the most heavily used class in this code. This is what will be used to shell out and run any system info retreival. Ideally I would like to stick to python libraries to call this data. But once in a while we need to shell out to obtain the data or result we are looking for. 
 Anytime we call `shell_cmd()` from the `Gather_System_Info()` class we log the command ran to disk. By default this will log to `./logging/incidentR.log`
