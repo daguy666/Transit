@@ -367,10 +367,33 @@ class Gather_System_Info(object):
         """
         Returns processor speed
         """
+        processor_list = []
         output = self.shell_cmd('system_profiler SPHardwareDataType')
         if output:
             speed = output[7].strip()
+            cores = output[9].strip()
+            proc_name = output[6]
+            num_procs = output[8]
             if speed.lower().startswith('processor'):
-                return speed
+                processor_list.append(speed)
+                processor_list.append(cores)
+                processor_list.append(proc_name)
+                processor_list.append(num_procs)
             else:
                 return "Error returning processor"
+        return processor_list
+
+    def return_other_very_random_info(self):
+        """
+        Literally as the method name is, there is some system info
+        that is interesting but doesn't fit in a better section.
+        """
+        hardware_list = []
+        output = self.shell_cmd('system_profiler SPHardwareDataType')
+        if output:
+            model_id = output[5].strip()
+            model_name = output[4].strip()
+            boot_rom = output[13].strip()
+            smc_version = output[14].strip()
+            return model_id, model_name, boot_rom, smc_version
+
