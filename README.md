@@ -33,6 +33,14 @@ Transit can pull the following information from a system.
 ---
 
 ##### Installation 
+
+Libaries to install
+
+```
+termcolor
+biplist
+```
+
 `pip install -r requirements.txt`
 
 
