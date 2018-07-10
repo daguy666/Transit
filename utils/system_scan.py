@@ -17,9 +17,9 @@ class System_Information_Scan(object):
         """
         Internal method to clean up the random print statments.
         """
-        print "[+] %s: %s" % (key, value) 
+        print "[+] %s %s" % (key, value)
 
-    def aquire_system_info(self):
+    def acquire_system_info(self):
         """
         Gather information about the system, siilar to info scan."
         """
@@ -28,6 +28,7 @@ class System_Information_Scan(object):
         system_time = datetime.today().strftime('%Y-%m-%d--%H:%M:%S')
         self._create_output('Current System Type', system_time)
         self._create_output('CPU', self.GSI.return_platform_info())
+        self._create_output(self.GSI.return_processor_speed(), '')
         self._create_output('Hostname', self.GSI.return_hostname())
         print self.lines
         self._create_output('OS Version', self.GSI.return_os_version())
@@ -41,12 +42,11 @@ class System_Information_Scan(object):
         self._create_output(self.GSI.return_uuid(), '')
         self._create_output(self.GSI.return_macos_serial_number(), '')
         print self.lines
-        self._create_output(self.GSI.return_processor_speed(), '')
         # TODO FINEEESH THIS.
     
     def main(self):
         """
         Start it up!
         """
-        self.aquire_system_info()
+        self.acquire_system_info()
 

@@ -89,12 +89,11 @@ try:
     ### == ### Instantiate our classes ### == ###
     IS   = Informational_Scan()
     GSI  = Gather_System_Info()
-    #PLR  = Return_User_Plists(username)  # Needs username
+    # PLR  = Return_User_Plists(username)  # Needs username
     PLAU = Return_All_User_Plists()
     RRLP = Return_Root_Level_Plists()
     SIS = System_Information_Scan()
     #############################################
-
 
     if user_input.isdigit():
         if user_input == "1":
@@ -126,7 +125,6 @@ try:
                 print "[!] Error problem with username: %s " % username
                 LOGGER.error('Choice 3 - Problem with username: %s' % username)
 
-
         elif user_input == "4":
             # Returns the root level plists for launchA / launchD
             # Return_Root_Level_Plists()
@@ -152,7 +150,6 @@ try:
             #    print GSI.return_crons(i)
             from proto.temp import proto_test
             proto_test()
-
 
     else:
         print "\n[!] Invalid input: %s" % user_input

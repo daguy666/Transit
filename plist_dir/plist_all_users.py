@@ -13,15 +13,12 @@ from utils.helper import Gather_System_Info
 from plist_root_level import Return_Root_Level_Plists
 
 
-
-
 class Return_All_User_Plists(object):
 
     def __init__(self):
         self.gsi = Gather_System_Info()
         self.root_plist = Return_Root_Level_Plists()
         self.user_list = []
-
 
     def gather_all_users(self):
         """
@@ -50,14 +47,14 @@ class Return_All_User_Plists(object):
         Return all the root plists
         """
         root_lists = self.root_plist
-        #todo finish this method
+        # todo finish this method
         root_lists.main()
-
 
     def main(self):
         """
         Lets do it!
         """
         self.gather_all_users()
+        print self.user_list
         self._loop_over_users()
         self.return_root_plists()
