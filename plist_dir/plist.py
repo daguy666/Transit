@@ -35,6 +35,8 @@ class Get_Plist_Info(object):
             # To call the virustotal class or not.
             self.virus_total = False
 
+        # TODO Get some path construction done here if need be.
+        # TODO Check for NoneType.
         def get_md5(self, file_to_check):
             """
             Returns a md5 value of a file
