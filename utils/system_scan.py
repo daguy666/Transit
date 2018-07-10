@@ -28,20 +28,26 @@ class System_Information_Scan(object):
         system_time = datetime.today().strftime('%Y-%m-%d--%H:%M:%S')
         self._create_output('Current System Type', system_time)
         self._create_output('CPU', self.GSI.return_platform_info())
-        self._create_output(self.GSI.return_processor_speed(), '')
         self._create_output('Hostname', self.GSI.return_hostname())
         print self.lines
-        self._create_output('OS Version', self.GSI.return_os_version())
-        self._create_output('OS Build', self.GSI.return_os_build())
-        self._create_output('OS Name', self.GSI.return_os_version_name().capitalize())
+        self._create_output('OS Version:', self.GSI.return_os_version())
+        self._create_output('OS Build:', self.GSI.return_os_build())
+        self._create_output('OS Name:', self.GSI.return_os_version_name().capitalize())
         print self.lines
         for mount in self.GSI.return_diskspace():
-            self._create_output('Disk Space', mount)
+            self._create_output('Disk Space:', mount)
         print self.lines
         self._create_output(self.GSI.return_system_memory(), '')
         self._create_output(self.GSI.return_uuid(), '')
         self._create_output(self.GSI.return_macos_serial_number(), '')
         print self.lines
+        for i in self.GSI.return_processor_speed():
+            self._create_output(i.strip(), '')
+        print self.lines
+        for i in self.GSI.return_other_very_random_info():
+            print i
+        print self.lines
+
         # TODO FINEEESH THIS.
     
     def main(self):
