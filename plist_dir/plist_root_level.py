@@ -3,8 +3,11 @@
 import os
 
 from pprint import pprint
+
+from plist import Get_Plist_Info
 from plist_two import Plist_Reader
 from extras.colors import Make_Color
+
 
 #TODO INCLUDE HASH OF PLIST IN OUTPUT
 
@@ -16,6 +19,7 @@ class Return_Root_Level_Plists(object):
     def __init__(self):
         self.path_one = "/Library/LaunchAgents"
         self.path_two = "/Library/LaunchDaemons"
+        self.GPI = Get_Plist_Info()
 
     def show_root_plist(self, path):
         """
@@ -27,8 +31,11 @@ class Return_Root_Level_Plists(object):
             if os.path.exists(path):
                 plr = Plist_Reader(path)
                 for i in plr.main():
+                    hash = self.GPI.get_md5('%s/%s.plist' % (path, i['Label']))
                     print "==" * 40
-                    print "[%s] %s/%s" % (color.color_me_red(), path, i['Label'])
+                    print "[%s] %s/%s \n[HASH]: %s" % (color.color_me_red(),
+                                             path, i['Label'],
+                                             hash)
                     print "==" * 40
                     print ""
                     pprint(i)

@@ -18,6 +18,7 @@ class Return_All_User_Plists(object):
     def __init__(self):
         self.gsi = Gather_System_Info()
         self.root_plist = Return_Root_Level_Plists()
+        # Temp storage for list of users to be created
         self.user_list = []
 
     def gather_all_users(self):
@@ -55,6 +56,6 @@ class Return_All_User_Plists(object):
         Lets do it!
         """
         self.gather_all_users()
-        print self.user_list
+        # print self.user_list
         self._loop_over_users()
         self.return_root_plists()
