@@ -9,6 +9,8 @@
 
 # don't commit the log file.
 log/incidentR.log
+log/*
+*.log
 
 # prototyping
 proto/
