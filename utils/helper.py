@@ -345,7 +345,7 @@ class Gather_System_Info(object):
         output = self.shell_cmd('system_profiler SPHardwareDataType')
         if output:
             # hard coding the 12th item in the index to memory. Don't go changing!
-            uuid = output[16].strip()
+            uuid = output[12].strip()
             if uuid.lower().startswith('hardware'):
                 return uuid
             else:
