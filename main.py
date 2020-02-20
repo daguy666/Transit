@@ -60,9 +60,9 @@ try:
 
     menu_item_one = "Run a full informational scan: " # do everything (whatever that is)
     # Maybe make plists a tree'd option
-    menu_item_two = "Gather preference lists for all users: "
-    menu_item_three = "Gather preference lists for one user: "  # ask for user later
-    menu_item_four = "Gather all Root level preference lists: (May require root)"
+    menu_item_two = "Gather plists for all users: "
+    menu_item_three = "Gather plists for one user: "  # ask for user later
+    menu_item_four = "Gather all Root level plists: (May require root)"
     menu_item_five = "Tar up log directories: "  # provide the logging directories run path exists to confirm
     menu_item_six = "Gather system information: "  # os version, os name, patch level, users, wifi, ..etc
 
